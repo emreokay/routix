@@ -1,0 +1,24 @@
+{
+    "name": "emreokay/routix",
+    "description": "Laravel API documentation generator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emre Okay",
+            "email": "emreeokay@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Emreokay\\Routix\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Emreokay\\Routix\\RoutixServiceProvider"
+            ]
+        }
+    }
+}
