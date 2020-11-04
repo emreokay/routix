@@ -4,6 +4,7 @@
 namespace Emreokay\Routix\Providers\Traits;
 
 
+use Emreokay\Routix\Console\RoutixGenerateCommand;
 use Emreokay\Routix\Support\Facades\Path;
 
 trait BootTrait
@@ -16,5 +17,14 @@ trait BootTrait
     protected function loadViews()
     {
         $this->loadViewsFrom(Path::path('/resources/views'),'routix');
+    }
+
+    protected function loadCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                RoutixGenerateCommand::class,
+            ]);
+        }
     }
 }

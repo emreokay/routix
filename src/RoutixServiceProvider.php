@@ -15,6 +15,7 @@ class RoutixServiceProvider extends ServiceProvider
     {
         $this->loadViews();
         $this->loadRoutes();
+        $this->loadCommands();
     }
 
     public function register()
