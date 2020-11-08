@@ -40,7 +40,7 @@ class Browser
                     'name'   => $this->name($route),
                     'action' => $this->action($route),
                 ];
-            });
+            })->unique('action');
     }
 
     public function filter(string $type, string $query)
@@ -59,6 +59,6 @@ class Browser
                 return $collection->filter(function ($item) use ($query){
                     return Str::contains($item['uri'], $query);
                 });
-            })->values()->first()['action'];
+            })->values();
     }
 }

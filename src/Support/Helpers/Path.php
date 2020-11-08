@@ -11,7 +11,7 @@ class Path
         return __DIR__.'/../../..';
     }
 
-    public function path(string $path)
+    public function to(string $path)
     {
         return $this->root().$path;
     }

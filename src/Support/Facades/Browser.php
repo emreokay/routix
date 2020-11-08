@@ -13,6 +13,6 @@ class Browser extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'browser';
+        return 'routix.browser';
     }
 }
