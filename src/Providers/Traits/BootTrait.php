@@ -11,12 +11,12 @@ trait BootTrait
 {
     protected function loadRoutes()
     {
-        $this->loadRoutesFrom(Path::path('/routes/web.php'));
+        $this->loadRoutesFrom(Path::to('/routes/web.php'));
     }
 
     protected function loadViews()
     {
-        $this->loadViewsFrom(Path::path('/resources/views'),'routix');
+        $this->loadViewsFrom(Path::to('/resources/views'),'routix');
     }
 
     protected function loadCommands()
