@@ -46,7 +46,7 @@ class Browser
     public function filter(string $type, string $query)
     {
         if(!in_array($type,Filter::TYPES)){
-            throw new FilterNotFoundException();
+            throw new FilterTypeNotFoundException();
         }
 
         return $this->all()

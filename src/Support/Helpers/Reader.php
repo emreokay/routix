@@ -5,12 +5,20 @@ namespace Emreokay\Routix\Support\Helpers;
 
 
 use Emreokay\Routix\Support\Facades\Browser;
+use Emreokay\Routix\Support\Facades\Parser;
 
 class Reader
 {
+    private $browser;
+
+    public function __construct()
+    {
+        $this->browser = Browser::all();
+    }
+
     private function classes()
     {
-        return Browser::all()->map(function ($item){
+        return $this->browser->map(function ($item){
             return new \ReflectionClass($item['action']);
         });
     }
@@ -22,13 +30,13 @@ class Reader
 
     private function getClassDoc(\ReflectionClass $rc)
     {
-        return $rc->getDocComment();
+        return Parser::get($rc->getDocComment());
     }
 
     private function getMethodDoc(\ReflectionClass $rc)
     {
         return collect($this->methods($rc))->map(function ($method) use ($rc){
-            return $rc->getMethod($method->getName())->getDocComment();
+            return Parser::get($rc->getMethod($method->getName())->getDocComment());
         })->filter()->toArray();
     }
 
