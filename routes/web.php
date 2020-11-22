@@ -2,9 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Emreokay\Routix\Http\Controllers\RoutixController;
+use Emreokay\Routix\Http\Controllers\SessionController;
 use Emreokay\Routix\Http\Controllers\TestingController;
 
-Route::get('routix',[RoutixController::class,'index'])->name('index');
+Route::get('/',[RoutixController::class,'index'])->name('index');
+Route::get('/login',[SessionController::class,'index'])->name('login.index');
+Route::post('/login',[SessionController::class,'store'])->name('login.store');
+Route::post('/logout',[SessionController::class,'destroy'])->name('login.destroy');
 
 // Testing
 Route::prefix('testing')->group(function (){
