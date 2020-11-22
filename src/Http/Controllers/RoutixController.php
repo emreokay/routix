@@ -8,18 +8,20 @@ use Emreokay\Routix\Support\Facades\Browser;
 use Emreokay\Routix\Support\Facades\Reader;
 
 /**
- * @group: {"emre": "okay"}
- * @type: "class"
+ * @routix
+ * @group {"emre": "okay"}
+ * @type "controller"
+ * @int 15645
  */
 class RoutixController
 {
     /**
-     * @type: "method"
+     * @group {"emre": "okay"}
+     * @type "method"
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $reader = Reader::all();
-        dd($reader);
         return view('routix::routix.index');
     }
 }

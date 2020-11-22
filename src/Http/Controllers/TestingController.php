@@ -7,21 +7,29 @@ namespace Emreokay\Routix\Http\Controllers;
 use Emreokay\Routix\Support\Facades\Browser;
 
 /**
- * A test class
- *
- * @param  foo bar
- * @return baz
+ * @group {"emre": "okay"}
+ * @type "class"
  */
 class TestingController
 {
+    /**
+     * @group {"emre": "okay"}
+     * @type "class"
+     * @emre "okay"
+     */
     public function turkey()
     {
         dd(explode('::',__METHOD__)[1]);
     }
+
+    /**
+     * @deneme "asdsa"
+     */
     public function izmir()
     {
         dd(explode('::',__METHOD__)[1]);
     }
+
     public function odemis()
     {
         dd(explode('::',__METHOD__)[1]);

@@ -4,6 +4,7 @@ namespace Emreokay\Routix\Providers\Traits;
 
 
 use Emreokay\Routix\Support\Helpers\Browser;
+use Emreokay\Routix\Support\Helpers\Parser;
 use Emreokay\Routix\Support\Helpers\Path;
 use Emreokay\Routix\Support\Helpers\Reader;
 
@@ -19,6 +20,9 @@ trait RegisterTrait
         });
         $this->app->bind('routix.reader', function($app) {
             return new Reader();
+        });
+        $this->app->bind('routix.parser', function($app) {
+            return new Parser();
         });
     }
 }
