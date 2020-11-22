@@ -12,6 +12,6 @@ class Parser extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'routix.parser';
+        return 'routix.parser' ;
     }
 }
