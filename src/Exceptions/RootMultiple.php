@@ -1,0 +1,20 @@
+<?php
+
+
+namespace Emreokay\Routix\Exceptions;
+
+
+use Exception;
+
+class RootMultiple extends Exception
+{
+    /**
+     * Report the exception.
+     *
+     * @return void
+     */
+    public function report()
+    {
+        $this->message = trans('routix::exceptions.root_multiple');
+    }
+}

@@ -6,14 +6,12 @@ namespace Emreokay\Routix\Support\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static Reader class()
- * @method static Reader method()
- * @method static Reader get()
+ * @method static Validator class(array $doc)
  */
-class Reader extends Facade
+class Validator extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'routix.reader';
+        return 'routix.validator';
     }
 }

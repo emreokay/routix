@@ -53,8 +53,12 @@ class Parser
             }
 
             $key = $matches[1];
-            $value = str_replace("@$key ", '', $item);
-            $value = trim($value,'"');
+            $value = str_replace(["@$key","@$key "], '', $item);
+            $value = trim(trim($value,'"'));
+            $value = $key == 'parent' && empty($value) ? null : $value;
+            $value = $key != 'parent' && empty($value) ? true : $value;
+            $value = trim(trim($value,'"'));
+            $value = $value == "1" ? true : $value;
 
             return [$key => $value];
         });

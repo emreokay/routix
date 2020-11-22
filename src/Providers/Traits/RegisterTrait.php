@@ -7,6 +7,7 @@ use Emreokay\Routix\Support\Helpers\Browser;
 use Emreokay\Routix\Support\Helpers\Parser;
 use Emreokay\Routix\Support\Helpers\Path;
 use Emreokay\Routix\Support\Helpers\Reader;
+use Emreokay\Routix\Support\Helpers\Validator;
 
 trait RegisterTrait
 {
@@ -23,6 +24,9 @@ trait RegisterTrait
         });
         $this->app->bind('routix.parser', function($app) {
             return new Parser();
+        });
+        $this->app->bind('routix.validator', function($app) {
+            return new Validator();
         });
     }
 }

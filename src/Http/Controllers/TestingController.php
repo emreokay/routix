@@ -7,24 +7,19 @@ namespace Emreokay\Routix\Http\Controllers;
 use Emreokay\Routix\Support\Facades\Browser;
 
 /**
- * @group {"emre": "okay"}
- * @type "class"
+ * @parent "root"
+ * @name "okay"
+ * @title "Alt Grup"
+ * @description "buraya açıklama gelecek"
+ * @text "Buraya detaylısı gelecek"
  */
 class TestingController
 {
-    /**
-     * @group {"emre": "okay"}
-     * @type "class"
-     * @emre "okay"
-     */
     public function turkey()
     {
         dd(explode('::',__METHOD__)[1]);
     }
 
-    /**
-     * @deneme "asdsa"
-     */
     public function izmir()
     {
         dd(explode('::',__METHOD__)[1]);

@@ -8,20 +8,22 @@ use Emreokay\Routix\Support\Facades\Browser;
 use Emreokay\Routix\Support\Facades\Reader;
 
 /**
- * @routix
- * @group {"emre": "okay"}
- * @type "controller"
- * @int 15645
+ * @root
+ * @name "okay"
+ * @title "Başlangıç"
+ * @description "buraya açıklama gelecek"
+ * @text "Buraya detaylısı gelecek"
+ * @image "deneme.png"
  */
 class RoutixController
 {
     /**
-     * @group {"emre": "okay"}
      * @type "method"
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
+        dd(Reader::class()->get());
+        dd(collect(json_decode(file_get_contents(storage_path('routix/routix.json'),true))));
         return view('routix::routix.index');
     }
 }
