@@ -46,7 +46,7 @@ class Parser
     private function createKeyValue()
     {
         $this->text = $this->text->mapWithKeys(function ($item){
-            preg_match('/@(\w+)/', $item, $matches);
+            preg_match('/@(\w+-?\d?)/', $item, $matches);
 
             if (empty($matches)){
                 throw new KeyNotFoundException();

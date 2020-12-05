@@ -30,4 +30,9 @@ trait BrowserColumns
     {
         return explode('@',$route->getActionName())[0] ?? $route->getActionName();
     }
+
+    private function func($route)
+    {
+        return explode('@',$route->getActionName())[1] ?? null;
+    }
 }

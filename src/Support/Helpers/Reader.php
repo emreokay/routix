@@ -4,71 +4,62 @@
 namespace Emreokay\Routix\Support\Helpers;
 
 
+use Emreokay\Routix\Support\Facades\Encoder;
+use Emreokay\Routix\Support\Facades\Complement;
+use Emreokay\Routix\Support\Facades\Sorter;
 use Emreokay\Routix\Support\Facades\Browser;
 use Emreokay\Routix\Support\Facades\Parser;
 use Emreokay\Routix\Support\Facades\Validator;
 
 class Reader
 {
-    private $browser;
     private $type;
-
-    public function __construct()
-    {
-        $this->browser = Browser::all();
-    }
 
     private function readClasses()
     {
-        return $this->browser->map(function ($item){
-            return new \ReflectionClass($item['action']);
+        return Browser::class()->get();
+    }
+
+    private function readMethods()
+    {
+        return Browser::method()->get();
+    }
+
+    private function class()
+    {
+        return $this->readClasses()->map(function ($item){
+            return [
+                'doc'   => Parser::get((new \ReflectionClass($item))->getDocComment()),
+                'data'  => $item
+            ];
         });
     }
 
-    private function readMethods(\ReflectionClass $rc)
+    private function method()
     {
-        return $rc->getMethods();
-    }
-
-    private function getClassDoc(\ReflectionClass $rc)
-    {
-        return Parser::get($rc->getDocComment());
-    }
-
-    private function getMethodDoc(\ReflectionClass $rc)
-    {
-        return collect($this->readMethods($rc))->map(function ($method) use ($rc){
-            return Parser::get($rc->getMethod($method->getName())->getDocComment());
-        })->filter()->toArray();
+        return $this->readMethods()->map(function ($method){
+            $class = new \ReflectionClass($method['action']);
+            return [
+                'doc'   => Parser::get($class->getMethod($method['func'])->getDocComment()),
+                'data'  => $method
+            ];
+        });
     }
 
     /**
      * @return $this
      */
-    public function class(): self
+    public function type(string $type): self
     {
-        $this->type = "class";
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function method(): self
-    {
-        $this->type = "method";
+        $this->type = $type;
         return $this;
     }
 
     public function get()
     {
-        $result = $this->readClasses()->map(function ($rc){
-            return [
-                'class'   => $this->getClassDoc($rc),
-                'method' => $this->getMethodDoc($rc)
-            ];
-        })->pluck($this->type)->filter()->values();
-
-        return Validator::{$this->type}($result);
+        $result = $this->{$this->type}()->filter(function ($item){
+            return !empty($item['doc']);
+        })->values();
+        return Sorter::{$this->type}(Complement::{$this->type}(Validator::{$this->type}(Encoder::{$this->type}($result))));
     }
 }

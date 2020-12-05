@@ -19,12 +19,50 @@ class Browser
      */
     private $routes;
 
+    private $type;
+    private $class;
+    private $method;
+
     /**
      * Browser constructor.
      */
     public function __construct()
     {
         $this->routes = collect(Route::getRoutes());
+    }
+
+    public function class()
+    {
+        $this->type = 'class';
+
+        $this->class = $this->routes->map(function ($route) {
+            return  [
+                'action' => $this->action($route),
+            ];
+        })->unique('action')->values()->flatten(1);
+
+        return $this;
+    }
+
+    public function method()
+    {
+        $this->type = 'method';
+
+        $this->method = $this->routes->map(function ($route) {
+            return  [
+                'action' => $this->action($route),
+                'method' => $this->methods($route),
+                'func'   => $this->func($route),
+                'url'    => $this->uri($route),
+            ];
+        })->values();
+
+        return $this;
+    }
+
+    public function get()
+    {
+        return $this->{$this->type};
     }
 
     /**
