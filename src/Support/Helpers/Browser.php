@@ -5,7 +5,7 @@ namespace Emreokay\Routix\Support\Helpers;
 
 
 use Emreokay\Routix\Enums\Filter;
-use Emreokay\Routix\Exceptions\FilterNotFoundException;
+use Emreokay\Routix\Exceptions\FilterTypeNotFoundException;
 use Emreokay\Routix\Support\Traits\BrowserColumns;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
