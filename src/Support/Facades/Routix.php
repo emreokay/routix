@@ -6,13 +6,13 @@ namespace Emreokay\Routix\Support\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static Reader type(string $type)
- * @method static Reader get()
+ * @method static Routix write()
+ * @method static Routix read()
  */
-class Reader extends Facade
+class Routix extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'routix.reader';
+        return 'routix.routix';
     }
 }

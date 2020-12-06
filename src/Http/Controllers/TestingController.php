@@ -7,77 +7,49 @@ namespace Emreokay\Routix\Http\Controllers;
 use Emreokay\Routix\Support\Facades\Browser;
 
 /**
- * @parent "root"
- * @name "okay"
- * @title "Alt Grup"
+ * @parent "okay"
+ * @name "ebru"
+ * @title "Alt alt Grup"
  * @description "buraya açıklama gelecek"
  * @text "Buraya detaylısı gelecek"
  */
 class TestingController
 {
+    /**
+     * @belongs "okay"
+     * @description "Buraya açıklama gelecek"
+     * @parameter-1 { "name": "start-date", "must": "required", "where": "query", "type": "string" }
+     * @parameter-2 { "name": "finish-date", "example": "2020-02-02", "must": "required", "where": "query", "type": "string" }
+     * @response-2 {"http_status_code": 200, "example": {"a": "b"} }
+     * @response-1 { "http_status_code": 200, "error_code": null, "example": { "result": "success", "message": "Giriş yapma işleminiz başarılı biçimde gerçekleştirildi.", "data": { "redirect_to": "/sirius/otp/session/sms/send", "cell_phone": "0506***3148", "token_type": "Bearer", "expires_in": 86400, "access_token": "..." } } }
+     */
     public function turkey()
     {
         dd(explode('::',__METHOD__)[1]);
     }
 
+    /**
+     * @belongs "okay"
+     * @description "Buraya açıklama gelecek"
+     * @parameter-1 { "name": "start-date", "must": "required", "where": "query", "type": "string" }
+     * @parameter-2 { "name": "finish-date", "example": "2020-02-02", "must": "required", "where": "query", "type": "string" }
+     * @response-2 {"http_status_code": 200, "example": {"a": "b"} }
+     * @response-1 { "http_status_code": 200, "error_code": null, "example": { "result": "success", "message": "Giriş yapma işleminiz başarılı biçimde gerçekleştirildi.", "data": { "redirect_to": "/sirius/otp/session/sms/send", "cell_phone": "0506***3148", "token_type": "Bearer", "expires_in": 86400, "access_token": "..." } } }
+     */
     public function izmir()
     {
         dd(explode('::',__METHOD__)[1]);
     }
 
+    /**
+     * @belongs "okay"
+     * @description "Buraya açıklama gelecek"
+     * @parameter-1 { "name": "start-date", "must": "required", "where": "query", "type": "string" }
+     * @parameter-2 { "name": "finish-date", "example": "2020-02-02", "must": "required", "where": "query", "type": "string" }
+     * @response-2 {"http_status_code": 200, "example": {"a": "b"} }
+     * @response-1 { "http_status_code": 200, "error_code": null, "example": { "result": "success", "message": "Giriş yapma işleminiz başarılı biçimde gerçekleştirildi.", "data": { "redirect_to": "/sirius/otp/session/sms/send", "cell_phone": "0506***3148", "token_type": "Bearer", "expires_in": 86400, "access_token": "..." } } }
+     */
     public function odemis()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function tire()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function istanbul()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function kadikoy()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function taksim()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function ankara()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function cankaya()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function kecioren()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function kutahya()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function tavsanli()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function gediz()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function bursa()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function gorukle()
-    {
-        dd(explode('::',__METHOD__)[1]);
-    }
-    public function nilufer()
     {
         dd(explode('::',__METHOD__)[1]);
     }

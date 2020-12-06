@@ -17,6 +17,7 @@ class Sorter
                 'name'            => $item['name'],
                 'title'           => $item['title'],
                 'description'     => $item['description'],
+                'image'           => $item['image'],
                 'text'            => $item['text'],
                 'routes'          => $item['routes'],
                 'children'        => $item['children'],

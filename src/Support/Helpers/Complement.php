@@ -44,18 +44,27 @@ class Complement
     public function method(Collection $collection)
     {
         return $collection->map(function ($item){
-            if(!$item['doc']->has('method')) $item['doc']->put('method',$item['data']['method']);
-            if(!$item['doc']->has('url')) $item['doc']->put('url',$item['data']['url']);
+            $item['doc'] = collect($item['doc']);
+            $item['doc']->when(!$item['doc']->has('method'), function ($collection) use ($item){
+                return $collection->put('method',$item['data']['method']);
+            });
+            $item['doc']->when(!$item['doc']->has('url'), function ($collection) use ($item){
+                return $collection->put('url',$item['data']['url']);
+            });
 
             $item['doc']['parameters'] = collect($item['doc']['parameters'])->map(function ($parameter){
                 $parameter = collect($parameter);
-                if(!$parameter->has('example')) $parameter->put('example',null);
+                $parameter->when(!$parameter->has('example'),function ($collection){
+                    return $collection->put('example',null);
+                });
                 return $parameter;
             });
 
             $item['doc']['responses'] = collect($item['doc']['responses'])->map(function ($response){
                 $response = collect($response);
-                if(!$response->has('error_code')) $response->put('error_code',null);
+                $response->when(!$response->has('error_code'),function ($collection){
+                    return $collection->put('error_code',null);
+                });
                 return $response;
             });
 
